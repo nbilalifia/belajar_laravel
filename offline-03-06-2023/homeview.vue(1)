@@ -1,0 +1,47 @@
+<script>
+import { ref, computed } from 'vue';
+
+export default {
+  setup() {
+    const deadline = ref('2023-05-26');
+    const hariIni = new Date().toLocaleDateString();
+    const selesai = ref(false);
+
+    const isDeadlineToday = computed(() => {
+      return deadline.value === hariIni;
+    });
+
+    const isTaskCompleted = computed(() => {
+      return selesai.value;
+    });
+
+    return {
+      isDeadlineToday,
+      isTaskCompleted
+    };
+  }
+};
+
+</script>
+
+<template>
+<main class "flex flex-col justify-center items-center">
+
+<h1 class "text-"
+  <div>
+    <h1>Conditional Rendering</h1>
+
+    <div v-if="isDeadlineToday">
+      Deadline hari ini
+    </div>
+
+    <div v-else-if="!isTaskCompleted">
+      Tugas belum selesai
+    </div>
+
+    <div v-else>
+      Tugas sudah selesai
+    </div>
+  </div>
+
+</template>
